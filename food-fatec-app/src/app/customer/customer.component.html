@@ -1,0 +1,150 @@
+<mat-toolbar>
+    <span>
+        <mat-icon>assignment</mat-icon>
+        Fatec Jales
+    </span>
+  </mat-toolbar>
+  <mat-tab-group class="full-width" #tabGroup="matTabGroup">
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon>list</mat-icon>
+            Todos
+        </ng-template>
+        <mat-card class="full-width">
+           
+            <table mat-table [dataSource]="dataSource" class="full-width" matTableResponsive >
+                
+                <ng-container matColumnDef="idCustomer">
+                  <th mat-header-cell *matHeaderCellDef> ID </th>
+                  <td mat-cell *matCellDef="let customer"> {{ customer.idCustomer }} </td>
+                </ng-container>
+                              
+                <ng-container matColumnDef="firstNameCustomer">
+                  <th mat-header-cell *matHeaderCellDef> First Nome </th>
+                  <td mat-cell *matCellDef="let customer"> {{ customer.firstnameCustomer }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="lastNameCustomer">
+                    <th mat-header-cell *matHeaderCellDef> Last Nome </th>
+                    <td mat-cell *matCellDef="let customer"> {{ customer.lastnameCustomer }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="cpfCustomer">
+                    <th mat-header-cell *matHeaderCellDef>Cpf Customer </th>
+                    <td mat-cell *matCellDef="let customer"> {{ customer.cpfCustomer }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="birthdateCustomer">
+                    <th mat-header-cell *matHeaderCellDef> Birth Date Customer </th>
+                    <td mat-cell *matCellDef="let customer"> {{ customer.birthdateCustomer }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="dateCreateCustomer">
+                    <th mat-header-cell *matHeaderCellDef> Date Create Customer </th>
+                    <td mat-cell *matCellDef="let customer"> {{ customer.dateCreateCustomer }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="monthlyIncomeCustomer">
+                    <th mat-header-cell *matHeaderCellDef> monthly Income Customer </th>
+                    <td mat-cell *matCellDef="let customer"> {{ customer.monthlyIncomeCustomer }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="statusCustomer">
+                    <th mat-header-cell *matHeaderCellDef> Status Customer </th>
+                    <td mat-cell *matCellDef="let customer"> {{ customer.statusCustomer }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="emailCustomer">
+                    <th mat-header-cell *matHeaderCellDef>Email Customer </th>
+                    <td mat-cell *matCellDef="let customer"> {{ customer.emailCustomer }} </td>
+                  </ng-container>
+
+                  
+              
+                  
+  
+                <ng-container matColumnDef="deleteCustomer">
+                    <th mat-header-cell *matHeaderCellDef> Excluir </th>
+                    <td mat-cell *matCellDef="let customer">
+                        <a href="#" routerLink="customer" (click)="deleteCustomer(customer)">
+                            <mat-icon>delete-forever</mat-icon>
+                        </a> 
+                    </td>
+                </ng-container>
+  
+                <ng-container matColumnDef="findCustomer">
+                    <th mat-header-cell *matHeaderCellDef> Editar </th>
+                    <td mat-cell *matCellDef="let customer">
+                         <a href="#" routerLink="customer" (click)="tabGroup.selectedIndex=1;findCustomer(customer);">
+                            <mat-icon>mode_edit</mat-icon>
+                        </a> 
+                    </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+  
+               <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]"  showFirstLastButtons></mat-paginator>         
+  
+        </mat-card>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon>face</mat-icon>
+            Novo
+        </ng-template>
+        <mat-card class="full-width">
+            <mat-card-title>Cadastro</mat-card-title>
+            <form>
+                <div>
+                    <mat-form-field class="full-width">
+                        <mat-label>First Nome: </mat-label>
+                        <input [(ngModel)]="customer.firstNameCustomer" type="text" matInput name="firstNameCustomer"
+                            placeholder="Digite o nome do cliente" required />
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Last Nome: </mat-label>
+                        <input [(ngModel)]="customer.lastNameCustomer" type="text" matInput name="lastNameCustomer"
+                            placeholder="Digite último nome do cliente" required />
+                    </mat-form-field>    
+                    <mat-form-field class="full-width">
+                        <mat-label>Cpf Customer: </mat-label>
+                        <input [(ngModel)]="customer.cpfCustomer" type="text" matInput name="cpfCustomer"
+                            placeholder="Digite CPF do cliente" required />
+                    </mat-form-field>   
+                    <mat-form-field class="full-width">
+                    <mat-label> Birth Date Customer: </mat-label>
+                        <input [(ngModel)]="customer.birthdateCustomer" type="text" matInput name="birthdateCustomer"
+                            placeholder="Digite a data de nascimento" required />
+                    </mat-form-field>  
+                      
+                    <mat-form-field class="full-width">
+                      <mat-label> Monthly IncomeCustomer: </mat-label>
+                      <input [(ngModel)]="customer.monthlyIncomeCustomer" type="text" matInput name="monthlyCreateCustomer"
+                          placeholder="Digite a renda mensal da categoria" required />
+                  </mat-form-field>   
+                  <mat-form-field class="full-width">
+                    <mat-label> Email Customer: </mat-label>
+                    <input [(ngModel)]="customer.emailCustomer" type="email" matInput name="emailCustomer"
+                        placeholder="Digite o email do cliente" required />
+                </mat-form-field>   
+                <mat-form-field class="full-width">
+                  <mat-label> Password Customer: </mat-label>
+                  <input [(ngModel)]="customer.passwordCustomer" type="password" matInput name="passwordCustomer"
+                      placeholder="Digite a descrição da categoria" required />
+              </mat-form-field>   
+                           
+                    <button (click)="saveCustomer()" mat-raised-button color="primary">Salvar</button>
+                </div>
+                <br />
+                <div role="alert" *ngIf="success == true">
+                    <span>Customer{{ customer.firstNameCustomer }} cadastrada com sucesso!</span>
+                </div>
+                <div role="alert" *ngFor="let error of errors">
+                    <span>{{ error }}</span>
+                </div>
+            </form>
+        </mat-card>
+    </mat-tab>
+  </mat-tab-group>

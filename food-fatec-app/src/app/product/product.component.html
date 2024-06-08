@@ -1,0 +1,160 @@
+<mat-toolbar>
+    <span>
+        <mat-icon>assignment</mat-icon>
+        Fatec Jales
+    </span>
+  </mat-toolbar>
+  <mat-tab-group class="full-width" #tabGroup="matTabGroup">
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon>list</mat-icon>
+            Todos
+        </ng-template>
+        <mat-card class="full-width">
+           
+            <table mat-table [dataSource]="dataSource" class="full-width" matTableResponsive >
+                
+                <ng-container matColumnDef="idCustomer">
+                  <th mat-header-cell *matHeaderCellDef> ID </th>
+                  <td mat-cell *matCellDef="let product"> {{ product.idProduct }} </td>
+                </ng-container>
+                              
+                <ng-container matColumnDef="NameProduct">
+                  <th mat-header-cell *matHeaderCellDef>  Name Product </th>
+                  <td mat-cell *matCellDef="let product"> {{ product.nameProduct }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="DescriptionProduct">
+                    <th mat-header-cell *matHeaderCellDef> Description Product </th>
+                    <td mat-cell *matCellDef="let product"> {{ product.descriptionProduct }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="skuProduct">
+                    <th mat-header-cell *matHeaderCellDef>Sku Product </th>
+                    <td mat-cell *matCellDef="let product"> {{ product.skuProduct }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="eanProduct">
+                    <th mat-header-cell *matHeaderCellDef> Ean Product </th>
+                    <td mat-cell *matCellDef="let product"> {{ product.eanProduct }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef=" costPriceProduct">
+                    <th mat-header-cell *matHeaderCellDef>  Cost Price Product </th>
+                    <td mat-cell *matCellDef="let product"> {{ product.costPriceProduct }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="publishedProduct">
+                    <th mat-header-cell *matHeaderCellDef> Published Product </th>
+                    <td mat-cell *matCellDef="let product"> {{ product.publishedProduct }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="dateCreateProduct">
+                    <th mat-header-cell *matHeaderCellDef> Date Create Product </th>
+                    <td mat-cell *matCellDef="let product"> {{product.dateCreateProduct }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="amountProduct">
+                    <th mat-header-cell *matHeaderCellDef>Amount Product </th>
+                    <td mat-cell *matCellDef="let product"> {{ product.amountProduct }} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="idCategory">
+                    <th mat-header-cell *matHeaderCellDef>id Category </th>
+                    <td mat-cell *matCellDef="let product"> {{ product.idCategory }} </td>
+                  </ng-container>
+                  
+
+                  
+              
+                  
+  
+                <ng-container matColumnDef="deleteProduct">
+                    <th mat-header-cell *matHeaderCellDef> Excluir </th>
+                    <td mat-cell *matCellDef="let product">
+                        <a href="#" routerLink="customer" (click)="deleteProduct(product)">
+                            <mat-icon>delete-forever</mat-icon>
+                        </a> 
+                    </td>
+                </ng-container>
+  
+                <ng-container matColumnDef="findProduct">
+                    <th mat-header-cell *matHeaderCellDef> Editar </th>
+                    <td mat-cell *matCellDef="let product">
+                         <a href="#" routerLink="product" (click)="tabGroup.selectedIndex=1;findProduct(product);">
+                            <mat-icon>mode_edit</mat-icon>
+                        </a> 
+                    </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+  
+               <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]"  showFirstLastButtons></mat-paginator>         
+  
+        </mat-card>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon>face</mat-icon>
+            Novo
+        </ng-template>
+        <mat-card class="full-width">
+            <mat-card-title>Cadastro</mat-card-title>
+            <form>
+                <div>
+                    <mat-form-field class="full-width">
+                        <mat-label> Name Product: </mat-label>
+                        <input [(ngModel)]="product.nameProduct" type="text" matInput name="nameProduct"
+                            placeholder="Digite o nome do Produto" required />
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Descrição Product: </mat-label>
+                        <input [(ngModel)]="product.descriptionProduct" type="text" matInput name="descriptionProduct"
+                            placeholder="Digite a descrição do Produto" required />
+                    </mat-form-field>    
+                    <mat-form-field class="full-width">
+                        <mat-label>Sku Product: </mat-label>
+                        <input [(ngModel)]="product.skuProduct" type="text" matInput name="skuProduct"
+                            placeholder="Digite o Sku do Product" required />
+                    </mat-form-field>   
+                    <mat-form-field class="full-width">
+                    <mat-label> Ean Product:: </mat-label>
+                        <input [(ngModel)]="product.eanProduct" type="text" matInput name="eanProduct:"
+                            placeholder="Digite a Ean do Produto" required />
+                    </mat-form-field>  
+                      
+                    <mat-form-field class="full-width">
+                      <mat-label> Cost Price Product: </mat-label>
+                      <input [(ngModel)]="product.costPriceProduct" type="text" matInput name="costPriceProduct"
+                          placeholder="Digite o Cost Price do Produto" required />
+                  </mat-form-field>   
+                    
+                 
+
+              <mat-form-field class="full-width">
+                <mat-label> Amount Product: </mat-label>
+                <input [(ngModel)]="product.amountProduct" type="text" matInput name="amountProduct"
+                    placeholder="Digite a amount do Product" required />
+            </mat-form-field> 
+
+            <mat-form-field class="full-width">
+                <mat-label> idCategory: </mat-label>
+                <input [(ngModel)]="product.idCategory" type="text" matInput name="idCategory"
+                    placeholder="Digite ao Id da Categoria que o Produto pertence" required />
+            </mat-form-field> 
+                           
+                    <button (click)="saveProduct()" mat-raised-button color="primary">Salvar</button>
+                </div>
+                <br />
+                <div role="alert" *ngIf="success == true">
+                    <span>Customer{{ product.nameProduct }} cadastrada com sucesso!</span>
+                </div>
+                <div role="alert" *ngFor="let error of errors">
+                    <span>{{ error }}</span>
+                </div>
+            </form>
+        </mat-card>
+    </mat-tab>
+  </mat-tab-group>

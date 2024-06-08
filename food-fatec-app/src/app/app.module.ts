@@ -20,12 +20,18 @@ import {MatTabsModule}   from '@angular/material/tabs'
 import { MatTableModule } from '@angular/material/table';
 import {MatCardModule}  from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerService } from './service/customer.service';
+import { ProductComponent } from './product/product.component';
+import { ProductService } from './service/product.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoryComponent,
-    MenubarComponent
+    MenubarComponent,
+    CustomerComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    CategoryService
+    CategoryService,
+    CustomerService,
+    ProductService
    ],
   bootstrap: [AppComponent]
 })
