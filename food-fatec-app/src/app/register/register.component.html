@@ -1,0 +1,47 @@
+<mat-card class="full-width">
+    <mat-card-title>Registrar-se</mat-card-title>
+    <form>
+        <div>
+            <mat-form-field class="full-width">
+                <mat-label>First Nome: </mat-label>
+                <input [(ngModel)]="customer.firstNameCustomer" type="text" matInput name="firstNameCustomer"
+                    placeholder="Digite o nome do cliente" required />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Last Nome: </mat-label>
+                <input [(ngModel)]="customer.lastNameCustomer" type="text" matInput name="lastNameCustomer"
+                    placeholder="Digite último nome do cliente" required />
+            </mat-form-field>    
+            <mat-form-field class="full-width">
+                <mat-label>Cpf Customer: </mat-label>
+                <input [(ngModel)]="customer.cpfCustomer" type="text" matInput name="cpfCustomer"
+                    placeholder="Digite CPF do cliente" required />
+            </mat-form-field>   
+            <mat-form-field class="full-width">
+            <mat-label> Birth Date Customer: </mat-label>
+                <input [(ngModel)]="customer.birthdateCustomer" type="text" matInput name="birthdateCustomer"
+                    placeholder="Digite a data de nascimento" required />
+            </mat-form-field>  
+              
+            <mat-form-field class="full-width">
+              <mat-label> Monthly IncomeCustomer: </mat-label>
+              <input [(ngModel)]="customer.monthlyIncomeCustomer" type="text" matInput name="monthlyCreateCustomer"
+                  placeholder="Digite a renda mensal da categoria" required />
+          </mat-form-field>   
+          <mat-form-field class="full-width">
+            <mat-label> Email Customer: </mat-label>
+            <input [(ngModel)]="customer.emailCustomer" type="email" matInput name="emailCustomer"
+                placeholder="Digite o email do cliente" required />
+        </mat-form-field>   
+        <mat-form-field class="full-width">
+          <mat-label> Password Customer: </mat-label>
+          <input [(ngModel)]="customer.passwordCustomer" type="password" matInput name="passwordCustomer"
+              placeholder="Digite a descrição da categoria" required />
+      </mat-form-field>   
+                   
+            <button (click)="saveCustomer()" mat-raised-button color="primary">Salvar</button>
+            <br />
+                <div role="alert" *ngIf="success == true">
+                    <span>Customer{{ customer.firstNameCustomer }} registrada com sucesso!</span>
+                </div>
+        </div>

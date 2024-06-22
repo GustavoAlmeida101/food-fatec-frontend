@@ -6,8 +6,7 @@ export interface Product {
   skuProduct:string
   eanProduct:string
   costPriceProduct:string
-  publishedProduct:boolean
-  dateCreateProduct:any
+ 
   amountProduct:string
   idCategory?:any
 

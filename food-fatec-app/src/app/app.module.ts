@@ -24,6 +24,11 @@ import { CustomerComponent } from './customer/customer.component';
 import { CustomerService } from './service/customer.service';
 import { ProductComponent } from './product/product.component';
 import { ProductService } from './service/product.service';
+import { MatSelectModule } from '@angular/material/select';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { RegisterService } from './service/register.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,10 @@ import { ProductService } from './service/product.service';
     CategoryComponent,
     MenubarComponent,
     CustomerComponent,
-    ProductComponent
+    ProductComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -48,14 +56,17 @@ import { ProductService } from './service/product.service';
     MatTableModule,
     MatTabsModule,
     MatCardModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSelectModule
   ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
     CategoryService,
     CustomerService,
-    ProductService
+    ProductService,
+    
+
    ],
   bootstrap: [AppComponent]
 })
