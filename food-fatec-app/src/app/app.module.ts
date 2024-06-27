@@ -29,6 +29,10 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './service/register.service';
+import { LoginService } from './service/login.service';
+
+import { AuthGuard } from './service/authguard.service';
+
 
 @NgModule({
   declarations: [
@@ -65,6 +69,10 @@ import { RegisterService } from './service/register.service';
     CategoryService,
     CustomerService,
     ProductService,
+    RegisterService,
+    LoginService,
+    AuthGuard
+
     
 
    ],

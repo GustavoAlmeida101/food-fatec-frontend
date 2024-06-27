@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../service/login.service';
+
+import { MatTableDataSource } from '@angular/material/table';
+import { UserLogin } from '../model/Userlogin';
+import e from 'express';
+import { ResponseLogin } from '../model/ResponseLogin';
+
 
 @Component({
   selector: 'app-login',
@@ -6,18 +13,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
-  
+ 
   email:string='';
-  password: String = '';
+  password: string = '';
   loginError:boolean = false;
 
-  constructor() {}
+ 
+
+  constructor(
+    private service: LoginService
+  ) { }
 
   ngOnInit(): void {
-      
   }
-   onSutbmit(){
-    console.log(`User:${this.email},Pass: ${this.password}`);
-   }
 
+  userLogin: UserLogin = {
+    emailCustomer: '',
+    passwordCustomer: ''
+  }
+
+  responseLogin: ResponseLogin = {
+    token: '',
+    refresh: ''
+  }
+
+  onSubmit() {
+    this.service.login(this.userLogin).subscribe((response: any) => {
+      console.log(response.token)
+    });
+  }
 }

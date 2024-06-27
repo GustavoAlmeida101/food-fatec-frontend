@@ -14,18 +14,18 @@
         <div class="half-width">
         <mat-form-field class="full-width">
             <mat-label> Email : </mat-label>
-            <input [(ngModel)]="email" type="email" matInput name="emailCustomer"
+            <input [(ngModel)]="userLogin.emailCustomer" type="email" matInput name="emailCustomer"
                 placeholder="Digite o email do cliente" required />
         </mat-form-field>   
     </div>
     <div class="half-width">
         <mat-form-field class="full-width">
           <mat-label> Password: </mat-label>
-          <input [(ngModel)]="password" type="password" matInput name="passwordCustomer"
+          <input [(ngModel)]="userLogin.passwordCustomer" type="password" matInput name="passwordCustomer"
               placeholder="Digite o password" required />
       </mat-form-field>  
       
-      <button (click)="onSutbmit()" mat-raised-button color="primary">Acessar</button>
+      <button (click)="onSubmit()" mat-raised-button color="primary">Acessar</button>
       <div class="full-width">
         Não tem cadastro 
         <a  href="#" routerLink="/register">Registra-se</a>
